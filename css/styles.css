@@ -76,9 +76,9 @@ nav ul li {
     margin-bottom: 10px;
 }
 
-/* Added rule for horizontal line below the first item */
+/* Rule for horizontal line below the first item */
 nav ul li:first-child {
-    border-bottom: 1px solid var(--border-color); /* Line using theme border color */
+    border-bottom: 1px solid #003366; /* Line color set to Dark Blue */
     padding-bottom: 10px; /* Space between text and line */
     margin-bottom: 10px; /* Space between line and next item */
 }
