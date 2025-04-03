@@ -46,7 +46,7 @@ body {
 /* --- Navigation Styles --- */
 nav {
     width: 480px;
-    background-color: lightpink; /* Changed as requested */
+    background-color: lightpink; /* Nav background color */
     padding: 20px;
     position: fixed;
     height: 100vh;
@@ -55,12 +55,15 @@ nav {
     top: 0;
     left: 0;
     z-index: 1000;
+    /* Added Borders for Banner Effect */
+    border-top: 20px solid #003366; /* Dark Blue Top Banner */
+    border-bottom: 20px solid #003366; /* Dark Blue Bottom Banner */
     /* No transition needed for theme colors as it's fixed */
 }
 
 nav h2 {
     margin-top: 0;
-    color: #333333; /* Hardcoded light text for contrast on light pink */
+    color: #333333; /* Hardcoded dark text for contrast on light pink */
     /* No transition needed */
 }
 
@@ -75,7 +78,8 @@ nav ul li {
 
 nav ul li a {
     text-decoration: none;
-    color: #333333; /* Hardcoded light text for contrast on light pink */
+    color: #003366; /* Dark Blue */
+    font-weight: bold; /* Added Bold */
     display: block;
     padding: 8px;
     border-radius: 5px;
@@ -509,3 +513,228 @@ main footer.footer-style {
 .outline-sublist li a {
     font-weight: normal;
     color: var(--link-color);
+}
+dt {
+    font-weight: bold;
+    margin-top: 1em;
+    color: var(--text-color);
+}
+dd {
+    margin-left: 20px;
+    margin-bottom: 1em;
+    color: var(--text-color);
+}
+.content-container h2,
+.content-container h3 {
+    margin-top: 1.5em;
+    margin-bottom: 0.25em;
+    color: var(--text-color);
+}
+.content-container > h2:first-of-type {
+    margin-top: 0;
+}
+.content-container p,
+.content-container ul,
+.content-container ol,
+.content-container dl,
+.content-container figure {
+     margin-top: 0;
+     margin-bottom: 1em;
+     color: var(--text-color);
+}
+.content-container h4 {
+     margin-top: 1em;
+     margin-bottom: 0.25em;
+     color: var(--text-color);
+}
+.content-container img.content-image {
+     margin-top: 0;
+     margin-bottom: 1em;
+}
+.content-container figure + p,
+.content-container figure + ul,
+.content-container figure + ol,
+.content-container figure + dl,
+.content-container figure + h2,
+.content-container figure + h3 {
+     margin-top: 0;
+}
+.content-container p + figure,
+.content-container ul + figure,
+.content-container ol + figure,
+.content-container dl + figure {
+    margin-top: 1em;
+}
+.content-container h2 + figure,
+.content-container h3 + figure {
+    margin-top: 0;
+}
+.content-container img.content-image + figcaption.caption-style {
+    margin-top: 0.5em;
+}
+.content-container img.content-image:has(+ figcaption.caption-style) {
+     margin-bottom: 0;
+}
+.content-container h2 + p,
+.content-container h2 + ul,
+.content-container h2 + ol,
+.content-container h2 + dl,
+.content-container h2 + img.content-image,
+.content-container h3 + p,
+.content-container h3 + ul,
+.content-container h3 + ol,
+.content-container h3 + dl,
+.content-container h3 + img.content-image,
+.content-container h4 + ul,
+.content-container h4 + ol {
+     margin-top: 0;
+}
+.content-container p + ul,
+.content-container p + ol,
+.content-container p + dl {
+     margin-top: 0;
+}
+.content-container p:has(+ ul),
+.content-container p:has(+ ol),
+.content-container p:has(+ dl) {
+     margin-bottom: 0;
+}
+.content-container h4:has(+ ul),
+.content-container h4:has(+ ol) {
+     margin-bottom: 0;
+}
+
+/* Specific styles for #page-about */
+/* These will only apply on about.html */
+#page-about main .contact-info,
+#page-about main .project-info {
+    margin-left: 0;
+    align-self: flex-start;
+    width: 100%;
+    max-width: 800px;
+    box-sizing: border-box;
+    background-color: var(--section-bg-color); /* Uses variable */
+    color: var(--text-color); /* Uses variable */
+}
+
+#page-about main .contact-info h3,
+#page-about main .project-info h3 {
+    margin-bottom: 0.3em;
+    margin-left: 0;
+    padding-left: 0;
+    color: var(--text-color); /* Uses variable */
+}
+
+#page-about main .contact-info ul,
+#page-about main .project-info ul {
+    margin-top: 0.3em;
+    padding-left: 20px;
+    margin-left: 0;
+    color: var(--text-color); /* Uses variable */
+}
+
+#page-about main .profile-picture {
+    display: block;
+    align-self: flex-start;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 0;
+    margin-right: 0;
+    object-fit: cover;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+    max-width: 800px;
+    box-sizing: border-box;
+}
+
+
+@media (max-width: 768px) {
+    .about-grid,
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .about-image {
+        order: -1;
+    }
+     nav {
+        width: 100%;
+        position: static;
+        height: auto;
+        overflow-y: visible;
+        margin-bottom: 20px;
+        z-index: auto;
+        box-sizing: border-box;
+        /* Background color will inherit from base 'nav' rule (lightpink) */
+        /* border-top/bottom banners still apply */
+     }
+    main {
+        width: 100%;
+        margin-left: 0;
+        padding: 10px;
+        display: block;
+        min-height: auto;
+        box-sizing: border-box;
+    }
+    .page-header {
+        text-align: center;
+        padding: 2rem 0;
+    }
+    main > .content-container {
+        align-self: auto;
+        width: 100%;
+        max-width: none;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+    .outline-wrapper {
+        max-width: none;
+        margin-bottom: 1.5em;
+    }
+    .audio-player-style {
+        max-width: 100%;
+    }
+    main > hr:first-of-type {
+         max-width: 100%;
+    }
+    main footer.footer-style {
+         max-width: 100%;
+    }
+    nav ul li a {
+        font-size: 1em;
+         /* color and font-weight inherit from base rule */
+    }
+     nav h2 {
+         /* color inherits from base rule */
+     }
+    main .page-header {
+        padding: 1rem 0;
+        margin-bottom: 15px;
+    }
+    .audio-title {
+         margin-top: 15px;
+    }
+    .intro-heading-center {
+         text-align: center;
+    }
+    #page-about main .profile-picture {
+        width: 80px;
+        height: 80px;
+        margin-top: 15px;
+        margin-bottom: 15px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    #theme-toggle-button {
+        margin: 10px auto;
+         /* Keep button light against pink nav background */
+         background-color: #ffffff;
+         color: #333333;
+         border-color: #cccccc;
+    }
+     #theme-toggle-button:hover {
+         background-color: #f0f0f0;
+     }
+}
