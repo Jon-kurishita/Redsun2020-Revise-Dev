@@ -99,6 +99,58 @@ nav ul li a:hover {
     background-color: #FFD1DC; /* Lighter Pink Hover */
 }
 
+/* --- Styles for Submenu --- */
+
+/* Style for the nested submenu UL */
+nav ul li ul.submenu {
+    display: none; /* Hidden by default */
+    list-style: none;
+    padding-left: 20px; /* Indentation for sub-items */
+    margin-top: 5px; /* Space below parent item */
+    margin-bottom: 10px; /* Space after submenu */
+}
+
+/* Style for sub-menu list items */
+nav ul li ul.submenu li {
+    margin-bottom: 5px; /* Smaller margin for sub-items */
+}
+
+/* Style for sub-menu links */
+nav ul li ul.submenu li a {
+    font-size: 0.85em; /* Slightly smaller font */
+    font-weight: normal; /* Sub-items not bold */
+    color: #003366; /* Keep dark blue or adjust if needed */
+    /* Ensure padding is appropriate */
+    padding: 5px 8px;
+}
+
+/* Rule to show the submenu when parent LI has 'open' class (will be added by JS) */
+nav ul li.has-submenu.open > ul.submenu {
+    display: block;
+}
+
+/* Optional: Add an indicator for expandable items */
+nav ul li.has-submenu > a::after {
+    content: ' ▼'; /* Simple down arrow indicator */
+    font-size: 0.7em;
+    margin-left: 5px;
+    display: inline-block;
+    transition: transform 0.2s ease-in-out;
+}
+
+/* Optional: Rotate arrow when open */
+nav ul li.has-submenu.open > a::after {
+    transform: rotate(-180deg);
+}
+
+/* Modify submenu link hover */
+nav ul li ul.submenu li a:hover {
+    background-color: #FFE4E1; /* Even lighter pink or different effect */
+}
+
+/* --- End Submenu Styles --- */
+
+
 #theme-toggle-button {
     display: block;
     margin: 20px auto 0 auto;
@@ -745,3 +797,13 @@ dd {
          background-color: #f0f0f0;
      }
 }
+```
+
+---
+
+**GitHub Commands to Publish:**
+
+After replacing the content of `css/styles.css` with the full code above, run the following combined command in your terminal, inside your project directory (`I:\08 REDSUN2020\Github\Redsun2020-Revise-Dev`):
+
+```bash
+git add css/styles.css && git commit -m "Integrate submenu CSS styles" && git push origin main
