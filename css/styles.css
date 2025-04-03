@@ -152,6 +152,58 @@ main a:hover {
     color: var(--link-hover-color);
 }
 
+/* --- Styles for Sections within Main --- */
+
+main > h2 { /* Style the main page title */
+    width: 100%;
+    max-width: 800px; /* Match content container */
+    text-align: center;
+    margin-bottom: 15px; /* Space before HR */
+    padding: 0 20px; /* Match content container padding */
+    box-sizing: border-box;
+}
+
+main > hr { /* Style the single HR after main title */
+     width: 100%;
+     max-width: 800px;
+     margin-top: 0; 
+     margin-bottom: 25px; /* Space after HR */
+     border: 0;
+     border-top: 1px solid var(--border-color);
+     transition: border-color 0.3s ease;
+}
+
+main section { /* Basic styling for content sections */
+    width: 100%;
+    max-width: 800px; /* Match content container */
+    padding: 15px 20px; /* Add some padding */
+    margin-bottom: 20px; /* Space between sections */
+    box-sizing: border-box;
+    border-radius: 5px; /* Slightly rounded corners */
+    transition: background-color 0.4s ease; /* Smooth transition for highlight */
+}
+
+main section h3 { /* Styling for section subheadings */
+    margin-top: 0;
+    margin-bottom: 0.5em;
+    color: var(--text-color);
+}
+
+/* Highlight rule for the targeted section */
+main section:target {
+    background-color: #FFFFE0; /* Light yellow highlight */
+    /* You could add border, box-shadow etc. here too */
+}
+
+/* Dark mode specific highlight */
+body.dark-mode main section:target {
+    background-color: #444433; /* Darker yellow/olive for dark mode */
+}
+
+
+/* --- Other existing styles below --- */
+
+
 .page-header {
     background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://source.unsplash.com/1600x400/?business') no-repeat center center/cover;
     color: var(--header-bg-image-text-color);
@@ -378,23 +430,7 @@ main > .content-container {
     margin-bottom: 2em;
 }
 
-main .page-header {
-    background: none;
-    color: var(--text-color);
-    padding: 0;
-    margin-top: 0;
-    margin-bottom: 0;
-    width: 100%;
-    max-width: 800px;
-    box-sizing: border-box;
-}
-main .page-header h1,
-main .page-header h2 {
-    font-size: 2rem;
-    margin: 0 0 0.5rem 0;
-    text-align: center;
-    color: var(--text-color);
-}
+/* Removed duplicate main .page-header styles */
 
 .audio-title {
     font-size: 1em;
@@ -430,15 +466,7 @@ main .page-header h2 {
     box-sizing: border-box;
 }
 
-main > hr:first-of-type {
-     width: 100%;
-     max-width: 800px;
-     margin-top: 20px;
-     margin-bottom: 20px;
-     border: 0;
-     border-top: 1px solid var(--border-color);
-     transition: border-color 0.3s ease;
-}
+/* Removed duplicate main > hr:first-of-type */
 
 .chapter-author-intro {
     font-size: 1.6em;
