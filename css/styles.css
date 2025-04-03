@@ -1,10 +1,6 @@
 :root {
     --bg-color: #ffffff;
     --text-color: #333333;
-    /* Nav variables no longer strictly needed if nav is hardcoded */
-    /* --nav-bg-color: #f4f4f4; */
-    /* --nav-text-color: #333333; */
-    /* --nav-link-hover-bg: #dddddd; */
     --link-color: #0066cc;
     --link-hover-color: #004c99;
     --section-bg-color: transparent;
@@ -20,10 +16,6 @@
 body.dark-mode {
     --bg-color: #121212;
     --text-color: #e0e0e0;
-    /* Nav variables overrides removed/ignored as nav is hardcoded */
-    /* --nav-bg-color: #1e1e1e; */
-    /* --nav-text-color: #e0e0e0; */
-    /* --nav-link-hover-bg: #333333; */
     --link-color: #8ab4f8;
     --link-hover-color: #aecbfa;
     --section-bg-color: transparent;
@@ -43,10 +35,9 @@ body {
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* --- Navigation Styles --- */
 nav {
     width: 480px;
-    background-color: lightpink; /* Nav background color */
+    background-color: lightpink;
     padding: 20px;
     position: fixed;
     height: 100vh;
@@ -55,16 +46,13 @@ nav {
     top: 0;
     left: 0;
     z-index: 1000;
-    /* Added Borders for Banner Effect */
-    border-top: 20px solid #003366; /* Dark Blue Top Banner */
-    border-bottom: 20px solid #003366; /* Dark Blue Bottom Banner */
-    /* No transition needed for theme colors as it's fixed */
+    border-top: 20px solid #003366;
+    border-bottom: 20px solid #003366;
 }
 
 nav h2 {
     margin-top: 0;
-    color: #333333; /* Hardcoded dark text for contrast on light pink */
-    /* No transition needed */
+    color: #333333;
 }
 
 nav ul {
@@ -76,98 +64,73 @@ nav ul li {
     margin-bottom: 10px;
 }
 
-/* Rule for horizontal line below the first item */
-nav ul li:first-child {
-    border-bottom: 1px solid #003366; /* Line color set to Dark Blue */
-    padding-bottom: 10px; /* Space between text and line */
-    margin-bottom: 10px; /* Space between line and next item */
-}
-
-
 nav ul li a {
     text-decoration: none;
-    color: #003366; /* Dark Blue */
-    font-weight: bold; /* Added Bold */
+    color: #003366;
+    font-weight: bold;
     display: block;
     padding: 8px;
     border-radius: 5px;
     font-size: 0.9em;
-    /* No transition needed for theme colors */
 }
 
 nav ul li a:hover {
-    background-color: #FFD1DC; /* Lighter Pink Hover */
+    background-color: #FFD1DC;
 }
 
-/* --- Styles for Submenu --- */
-
-/* Style for the nested submenu UL */
 nav ul li ul.submenu {
-    display: none; /* Hidden by default */
+    display: none;
     list-style: none;
-    padding-left: 20px; /* Indentation for sub-items */
-    margin-top: 5px; /* Space below parent item */
-    margin-bottom: 10px; /* Space after submenu */
+    padding-left: 20px;
+    margin-top: 5px;
+    margin-bottom: 10px;
 }
 
-/* Style for sub-menu list items */
 nav ul li ul.submenu li {
-    margin-bottom: 5px; /* Smaller margin for sub-items */
+    margin-bottom: 5px;
 }
 
-/* Style for sub-menu links */
 nav ul li ul.submenu li a {
-    font-size: 0.85em; /* Slightly smaller font */
-    font-weight: normal; /* Sub-items not bold */
-    color: #003366; /* Keep dark blue or adjust if needed */
-    /* Ensure padding is appropriate */
+    font-size: 0.85em;
+    font-weight: normal;
+    color: #003366;
     padding: 5px 8px;
 }
 
-/* Rule to show the submenu when parent LI has 'open' class (will be added by JS) */
 nav ul li.has-submenu.open > ul.submenu {
     display: block;
 }
 
-/* Optional: Add an indicator for expandable items */
 nav ul li.has-submenu > a::after {
-    content: ' ▼'; /* Simple down arrow indicator */
+    content: ' ▼';
     font-size: 0.7em;
     margin-left: 5px;
     display: inline-block;
     transition: transform 0.2s ease-in-out;
 }
 
-/* Optional: Rotate arrow when open */
 nav ul li.has-submenu.open > a::after {
     transform: rotate(-180deg);
 }
 
-/* Modify submenu link hover */
 nav ul li ul.submenu li a:hover {
-    background-color: #FFE4E1; /* Even lighter pink or different effect */
+    background-color: #FFE4E1;
 }
-
-/* --- End Submenu Styles --- */
-
 
 #theme-toggle-button {
     display: block;
     margin: 20px auto 0 auto;
     padding: 8px 15px;
     cursor: pointer;
-    border: 1px solid #cccccc; /* Consider adjusting border for pink background */
-    background-color: #ffffff; /* White or light background for button */
-    color: #333333; /* Dark text */
+    border: 1px solid #cccccc;
+    background-color: #ffffff;
+    color: #333333;
     border-radius: 5px;
-    /* No transition needed for theme colors */
 }
 
 #theme-toggle-button:hover {
-    background-color: #f0f0f0; /* Light grey hover for button */
+    background-color: #f0f0f0;
 }
-/* --- End Navigation Styles --- */
-
 
 main {
     padding: 20px;
@@ -177,21 +140,21 @@ main {
     align-items: center;
     box-sizing: border-box;
     min-height: 100vh;
-    background-color: var(--bg-color); /* Uses variable */
-    color: var(--text-color); /* Uses variable */
+    background-color: var(--bg-color);
+    color: var(--text-color);
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 main a {
-    color: var(--link-color); /* Uses variable */
+    color: var(--link-color);
 }
 main a:hover {
-    color: var(--link-hover-color); /* Uses variable */
+    color: var(--link-hover-color);
 }
 
 .page-header {
     background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://source.unsplash.com/1600x400/?business') no-repeat center center/cover;
-    color: var(--header-bg-image-text-color); /* Uses variable (kept white) */
+    color: var(--header-bg-image-text-color);
     text-align: center;
     padding: 5rem 0;
 }
@@ -272,12 +235,12 @@ main a:hover {
 }
 
 .team-member .social-icons a {
-    background-color: #e0e0e0; /* Adjusted to a light grey, could use a variable if needed elsewhere */
+    background-color: #e0e0e0;
     color: var(--dark-color, var(--dark-color-placeholder));
     transition: background-color 0.3s ease;
 }
 body.dark-mode .team-member .social-icons a {
-     background-color: #333333; /* Darker background for icons in dark mode */
+     background-color: #333333;
 }
 
 
@@ -797,13 +760,3 @@ dd {
          background-color: #f0f0f0;
      }
 }
-```
-
----
-
-**GitHub Commands to Publish:**
-
-After replacing the content of `css/styles.css` with the full code above, run the following combined command in your terminal, inside your project directory (`I:\08 REDSUN2020\Github\Redsun2020-Revise-Dev`):
-
-```bash
-git add css/styles.css && git commit -m "Integrate submenu CSS styles" && git push origin main
