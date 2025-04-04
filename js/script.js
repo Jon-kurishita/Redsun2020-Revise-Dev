@@ -1,32 +1,55 @@
 document.addEventListener('DOMContentLoaded', function() {
     
-    // --- Submenu Logic ---
-    // Find all main list items that have a submenu
+    const storageKey = 'openSubmenuHref'; // Key for localStorage
+
+    // --- On Page Load: Check localStorage and Open Remembered Submenu ---
+    const openMenuHref = localStorage.getItem(storageKey);
+    if (openMenuHref) {
+        // Find the LI whose direct child link matches the stored href
+        const linkToOpen = document.querySelector(`nav ul > li.has-submenu > a[href="${openMenuHref}"]`);
+        if (linkToOpen) {
+            // Add 'open' class to the parent LI to expand the submenu
+            linkToOpen.parentElement.classList.add('open'); 
+        }
+    }
+
+    // --- Submenu Click Handling ---
     const submenuItems = document.querySelectorAll('nav ul > li.has-submenu');
 
     submenuItems.forEach(item => {
         // Get the main link within this list item
-        // Query only the direct child anchor to avoid selecting submenu anchors
         const mainLink = item.querySelector(':scope > a'); 
 
         if (mainLink) {
             mainLink.addEventListener('click', function(event) {
                 // Prevent the link from navigating to the page itself when clicked
-                // This makes the click ONLY toggle the submenu.
                 event.preventDefault(); 
+                
+                const currentHref = mainLink.getAttribute('href');
+                // Toggle the 'open' class on the parent LI and check its new state
+                const isOpen = item.classList.toggle('open'); 
 
-                // Toggle the 'open' class on the parent LI
-                item.classList.toggle('open');
-
-                // Optional: Close other open submenus when one is opened
-                // If you want only one submenu open at a time, uncomment the block below
-                /*
-                submenuItems.forEach(otherItem => {
-                    if (otherItem !== item && otherItem.classList.contains('open')) {
-                        otherItem.classList.remove('open');
+                if (isOpen) {
+                    // If the menu was just opened, store its href, overwriting any previous value
+                    localStorage.setItem(storageKey, currentHref);
+                    
+                    // Optional: Close other open submenus if you only want one open ever
+                    // If uncommented, also adjust localStorage logic if needed
+                    /*
+                    submenuItems.forEach(otherItem => {
+                        if (otherItem !== item && otherItem.classList.contains('open')) {
+                            otherItem.classList.remove('open');
+                            // Potentially remove other item from localStorage if tracking multiple
+                        }
+                    });
+                    */
+                } else {
+                    // If the menu was just closed, check if it was the one stored
+                    // If so, remove it from storage so it doesn't reopen on next load
+                    if (localStorage.getItem(storageKey) === currentHref) {
+                        localStorage.removeItem(storageKey);
                     }
-                });
-                */
+                }
             });
         }
 
