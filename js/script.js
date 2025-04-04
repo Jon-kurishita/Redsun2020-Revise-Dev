@@ -1,17 +1,34 @@
 document.addEventListener('DOMContentLoaded', function() {
     
-    const storageKey = 'openSubmenuHref'; // Key for localStorage
+    const storageKey = 'openSubmenus'; // Use a key that implies multiple items
 
-    // --- On Page Load: Check localStorage and Open Remembered Submenu ---
-    const openMenuHref = localStorage.getItem(storageKey);
-    if (openMenuHref) {
+    // Function to get the current state from localStorage
+    function getOpenMenusState() {
+        const storedState = localStorage.getItem(storageKey);
+        try {
+            // Try parsing JSON, return empty object if null or invalid
+            return storedState ? JSON.parse(storedState) : {};
+        } catch (e) {
+            console.error("Error parsing localStorage state:", e);
+            return {}; // Return empty object on error
+        }
+    }
+
+    // Function to save the current state to localStorage
+    function saveOpenMenusState(state) {
+        localStorage.setItem(storageKey, JSON.stringify(state));
+    }
+
+    // --- On Page Load: Check localStorage and Open Remembered Submenus ---
+    const openMenus = getOpenMenusState();
+    Object.keys(openMenus).forEach(openMenuHref => {
         // Find the LI whose direct child link matches the stored href
         const linkToOpen = document.querySelector(`nav ul > li.has-submenu > a[href="${openMenuHref}"]`);
-        if (linkToOpen) {
+        if (linkToOpen && openMenus[openMenuHref] === true) { // Check if value is true
             // Add 'open' class to the parent LI to expand the submenu
             linkToOpen.parentElement.classList.add('open'); 
         }
-    }
+    });
 
     // --- Submenu Click Handling ---
     const submenuItems = document.querySelectorAll('nav ul > li.has-submenu');
@@ -28,28 +45,34 @@ document.addEventListener('DOMContentLoaded', function() {
                 const currentHref = mainLink.getAttribute('href');
                 // Toggle the 'open' class on the parent LI and check its new state
                 const isOpen = item.classList.toggle('open'); 
+                
+                // Get the current state *after* toggling visually
+                const currentState = getOpenMenusState();
 
                 if (isOpen) {
-                    // If the menu was just opened, store its href, overwriting any previous value
-                    localStorage.setItem(storageKey, currentHref);
-                    
-                    // Optional: Close other open submenus if you only want one open ever
-                    // If uncommented, also adjust localStorage logic if needed
-                    /*
-                    submenuItems.forEach(otherItem => {
-                        if (otherItem !== item && otherItem.classList.contains('open')) {
-                            otherItem.classList.remove('open');
-                            // Potentially remove other item from localStorage if tracking multiple
-                        }
-                    });
-                    */
+                    // If the menu was just opened, add its href to the state object
+                    currentState[currentHref] = true;
                 } else {
-                    // If the menu was just closed, check if it was the one stored
-                    // If so, remove it from storage so it doesn't reopen on next load
-                    if (localStorage.getItem(storageKey) === currentHref) {
-                        localStorage.removeItem(storageKey);
-                    }
+                    // If the menu was just closed, remove its href from the state object
+                    delete currentState[currentHref];
                 }
+                // Save the updated state back to localStorage
+                saveOpenMenusState(currentState);
+
+                // Note: The "close others" logic remains commented out as requested
+                /*
+                submenuItems.forEach(otherItem => {
+                    if (otherItem !== item && otherItem.classList.contains('open')) {
+                        otherItem.classList.remove('open');
+                        // If closing others, update localStorage accordingly here too
+                        const otherHref = otherItem.querySelector(':scope > a').getAttribute('href');
+                        delete currentState[otherHref]; // Remove others from state
+                    }
+                });
+                if (isOpen) { // Re-save state if others were closed
+                    saveOpenMenusState(currentState);
+                }
+                */
             });
         }
 
