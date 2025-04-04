@@ -152,57 +152,50 @@ main a:hover {
     color: var(--link-hover-color);
 }
 
-/* --- Styles for Sections within Main --- */
-
-main > h2 { /* Style the main page title */
+main > h2 {
     width: 100%;
-    max-width: 800px; /* Match content container */
+    max-width: 800px;
     text-align: center;
-    margin-bottom: 15px; /* Space before HR */
-    padding: 0 20px; /* Match content container padding */
+    margin-bottom: 15px;
+    padding: 0 20px;
     box-sizing: border-box;
+    color: #003366; /* Set main title color */
+    font-weight: bold; /* Set main title bold */
 }
 
-main > hr { /* Style the single HR after main title */
+main > hr {
      width: 100%;
      max-width: 800px;
-     margin-top: 0; 
-     margin-bottom: 25px; /* Space after HR */
+     margin-top: 0;
+     margin-bottom: 25px;
      border: 0;
      border-top: 1px solid var(--border-color);
      transition: border-color 0.3s ease;
 }
 
-main section { /* Basic styling for content sections */
+main section {
     width: 100%;
-    max-width: 800px; /* Match content container */
-    padding: 15px 20px; /* Add some padding */
-    margin-bottom: 20px; /* Space between sections */
+    max-width: 800px;
+    padding: 15px 20px;
+    margin-bottom: 20px;
     box-sizing: border-box;
-    border-radius: 5px; /* Slightly rounded corners */
-    transition: background-color 0.4s ease; /* Smooth transition for highlight */
+    border-radius: 5px;
+    transition: background-color 0.4s ease;
 }
 
-main section h3 { /* Styling for section subheadings */
+main section h3 {
     margin-top: 0;
     margin-bottom: 0.5em;
-    color: var(--text-color);
+    color: #003366; /* Set sub-title color */
 }
 
-/* Highlight rule for the targeted section */
 main section:target {
-    background-color: #FFFFE0; /* Light yellow highlight */
-    /* You could add border, box-shadow etc. here too */
+    background-color: #FFD1DC; /* Light Pink highlight */
 }
 
-/* Dark mode specific highlight */
 body.dark-mode main section:target {
-    background-color: #444433; /* Darker yellow/olive for dark mode */
+    background-color: #4d333f; /* Subtle darker pink/mauve for dark mode */
 }
-
-
-/* --- Other existing styles below --- */
-
 
 .page-header {
     background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://source.unsplash.com/1600x400/?business') no-repeat center center/cover;
@@ -430,8 +423,6 @@ main > .content-container {
     margin-bottom: 2em;
 }
 
-/* Removed duplicate main .page-header styles */
-
 .audio-title {
     font-size: 1em;
     color: var(--link-color);
@@ -465,8 +456,6 @@ main > .content-container {
     margin-bottom: 20px;
     box-sizing: border-box;
 }
-
-/* Removed duplicate main > hr:first-of-type */
 
 .chapter-author-intro {
     font-size: 1.6em;
@@ -654,8 +643,6 @@ dd {
      margin-bottom: 0;
 }
 
-/* Specific styles for #page-about */
-/* These will only apply on about.html */
 #page-about main .contact-info,
 #page-about main .project-info {
     margin-left: 0;
@@ -663,8 +650,8 @@ dd {
     width: 100%;
     max-width: 800px;
     box-sizing: border-box;
-    background-color: var(--section-bg-color); /* Uses variable */
-    color: var(--text-color); /* Uses variable */
+    background-color: var(--section-bg-color);
+    color: var(--text-color);
 }
 
 #page-about main .contact-info h3,
@@ -672,7 +659,7 @@ dd {
     margin-bottom: 0.3em;
     margin-left: 0;
     padding-left: 0;
-    color: var(--text-color); /* Uses variable */
+    color: var(--text-color);
 }
 
 #page-about main .contact-info ul,
@@ -680,7 +667,7 @@ dd {
     margin-top: 0.3em;
     padding-left: 20px;
     margin-left: 0;
-    color: var(--text-color); /* Uses variable */
+    color: var(--text-color);
 }
 
 #page-about main .profile-picture {
@@ -717,8 +704,6 @@ dd {
         margin-bottom: 20px;
         z-index: auto;
         box-sizing: border-box;
-        /* Background color will inherit from base 'nav' rule (lightpink) */
-        /* border-top/bottom banners still apply */
      }
     main {
         width: 100%;
@@ -754,10 +739,8 @@ dd {
     }
     nav ul li a {
         font-size: 1em;
-         /* color and font-weight inherit from base rule */
     }
      nav h2 {
-         /* color inherits from base rule */
      }
     main .page-header {
         padding: 1rem 0;
@@ -779,7 +762,6 @@ dd {
     }
     #theme-toggle-button {
         margin: 10px auto;
-         /* Keep button light against pink nav background */
          background-color: #ffffff;
          color: #333333;
          border-color: #cccccc;
