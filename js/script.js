@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // --- Submenu Click Handling ---
+    // --- Submenu Click Handling (Revised) ---
     // Select ALL LIs that have submenus, regardless of level
     const submenuItems = document.querySelectorAll('nav li.has-submenu'); 
 
@@ -41,48 +41,40 @@ document.addEventListener('DOMContentLoaded', function() {
 
         if (mainLink) {
             mainLink.addEventListener('click', function(event) {
-                // event.preventDefault(); // REMOVED THIS LINE to allow navigation
+                // Allow default navigation (no preventDefault)
                 
                 const currentHref = mainLink.getAttribute('href');
-                // Toggle the 'open' class on the parent LI and check its new state
-                // We toggle AFTER potential navigation happens
-                const wasOpen = item.classList.contains('open');
-                
-                // Use setTimeout to allow navigation before toggling/saving state visually
-                // This might feel slightly less immediate but ensures navigation happens
-                setTimeout(() => {
-                    const currentState = getOpenMenusState();
-                    // Re-check the class in case navigation was very fast and DOM reset
-                    // Or simply toggle based on the intended action
-                    
-                    if (!wasOpen) { // If it was closed, we are opening it
-                        item.classList.add('open');
-                        currentState[currentHref] = true;
-                        // Optional: Close others
-                        /*
-                        submenuItems.forEach(otherItem => {
-                           if (otherItem !== item && otherItem.classList.contains('open')) {
-                               otherItem.classList.remove('open');
-                               const otherHref = otherItem.querySelector(':scope > a').getAttribute('href');
-                               delete currentState[otherHref]; 
-                           }
-                        });
-                        */
-                    } else { // If it was open, we are closing it
-                        item.classList.remove('open');
-                        delete currentState[currentHref];
-                        // Also remove 'open' from any nested submenus within this one
-                        const nestedOpens = item.querySelectorAll('.has-submenu.open');
-                        nestedOpens.forEach(nested => {
-                            nested.classList.remove('open');
-                            const nestedHref = nested.querySelector(':scope > a').getAttribute('href');
-                            delete currentState[nestedHref]; 
-                        });
-                    }
-                    // Save the updated state back to localStorage
-                    saveOpenMenusState(currentState);
-                }, 0); // Timeout 0 allows browser default action (navigation) to proceed
+                const currentState = getOpenMenusState();
+                // Check the VISUAL state right now to determine the INTENDED next state
+                const isCurrentlyOpen = item.classList.contains('open'); 
+                const willBeOpen = !isCurrentlyOpen; 
 
+                if (willBeOpen) {
+                    // Intending to open: Add/update its href in the state object
+                    currentState[currentHref] = true;
+                     // Optional: Close others if uncommented
+                     /*
+                     submenuItems.forEach(otherItem => {
+                        if (otherItem !== item && otherItem.classList.contains('open')) {
+                            // otherItem.classList.remove('open'); // Visual change skipped
+                            const otherHref = otherItem.querySelector(':scope > a').getAttribute('href');
+                            delete currentState[otherHref]; 
+                        }
+                     });
+                     */
+                } else { 
+                    // Intending to close: Remove its href from the state object
+                    delete currentState[currentHref];
+                    // Also remove state for any nested submenus within this one
+                    const nestedLinks = item.querySelectorAll('.submenu li.has-submenu > a');
+                    nestedLinks.forEach(nestedLink => {
+                        delete currentState[nestedLink.getAttribute('href')];
+                    });
+                }
+                // Save the INTENDED state for the NEXT page load IMMEDIATELY
+                saveOpenMenusState(currentState);
+                
+                // No visual toggle here - let navigation proceed and rely on page load logic
             });
         }
 
@@ -90,8 +82,8 @@ document.addEventListener('DOMContentLoaded', function() {
         // navigate correctly and don't re-trigger the toggle
         const subLinks = item.querySelectorAll('.submenu a');
         subLinks.forEach(subLink => {
-             // Check if this sublink is NOT also a parent toggle link
-             if (!subLink.closest('li.has-submenu').isSameNode(subLink.closest('ul.submenu').closest('li.has-submenu'))) {
+             // Check if this sublink is NOT also a parent toggle link by checking its parent LI
+             if (!subLink.closest('li').classList.contains('has-submenu')) {
                  subLink.addEventListener('click', function(event) {
                     // Stop the click from bubbling up 
                     event.stopPropagation(); 
@@ -102,6 +94,3 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
 }); // --- End of DOMContentLoaded listener ---
-```
-*(Self-correction note: Removed `preventDefault` and added a `setTimeout` wrapper around the class toggling and localStorage logic in the main link's click handler. This standard pattern allows the default navigation action to proceed immediately while still performing the toggle/state update just after.)*
-*(Further self-correction: Refined the sublink event listener logic slightly to be more robust in identifying true sublinks vs nested parent links
