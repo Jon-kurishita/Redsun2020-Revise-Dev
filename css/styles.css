@@ -159,8 +159,8 @@ main > h2 {
     margin-bottom: 15px;
     padding: 0 20px;
     box-sizing: border-box;
-    color: #003366; /* Set main title color */
-    font-weight: bold; /* Set main title bold */
+    color: #003366;
+    font-weight: bold;
 }
 
 main > hr {
@@ -180,22 +180,44 @@ main section {
     margin-bottom: 20px;
     box-sizing: border-box;
     border-radius: 5px;
-    transition: background-color 0.4s ease;
+    /* Removed transition from section */
 }
 
 main section h3 {
     margin-top: 0;
     margin-bottom: 0.5em;
-    color: #003366; /* Set sub-title color */
+    color: #003366;
+    display: inline-block; /* Allow background only around text */
+    padding: 0; /* Reset padding */
+    margin: 0 0 0.5em 0; /* Reset margin, keep bottom */
+    border-radius: 3px; /* Optional: Rounded corners for highlight */
+    transition: background-color 0.4s ease, color 0.4s ease; /* Transition on H3 */
 }
 
 main section:target {
-    background-color: #FFD1DC; /* Light Pink highlight */
+    /* Remove background color from the section itself */
+    /* background-color: #FFD1DC; */ 
 }
 
 body.dark-mode main section:target {
-    background-color: #4d333f; /* Subtle darker pink/mauve for dark mode */
+    /* Remove background color from the section itself */
+    /* background-color: #4d333f; */
 }
+
+/* Apply highlight ONLY to the H3 within the targeted section */
+main section:target h3 {
+    background-color: #FFD1DC; /* Light Pink highlight */
+    color: #003366; /* Keep text dark blue */
+    padding: 5px 10px; /* Add padding for background visibility */
+    margin: -5px -10px 0.5em -10px; /* Adjust negative margin for padding */
+}
+
+/* Dark mode specific highlight for H3 */
+body.dark-mode main section:target h3 {
+    background-color: #4d333f; /* Dark mode highlight color */
+    color: #e0e0e0; /* Ensure text color is light */
+}
+
 
 .page-header {
     background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://source.unsplash.com/1600x400/?business') no-repeat center center/cover;
