@@ -83,7 +83,18 @@
             </ul>
         </li>
 
-        <li><a href="{{ '/5-Quests.html' | relative_url }}">Quests</a></li>
+        <li class="has-submenu"> 
+            <a href="{{ '/5-Quests.html' | relative_url }}">Quests</a>
+            <ul class="submenu"> 
+                <li><a href="{{ '/5-quests-primary.html' | relative_url }}">Primary Objectives</a></li>
+                <li><a href="{{ '/5-quests-secondary.html' | relative_url }}">Secondary Objectives</a></li>
+                <li><a href="{{ '/5-quests-lines.html' | relative_url }}">Questlines</a></li>
+                <li><a href="{{ '/5-quests-side.html' | relative_url }}">SideQuests</a></li>
+                <li><a href="{{ '/5-quests-trans.html' | relative_url }}">Transmissions</a></li>
+                <li><a href="{{ '/5-quests-eggs.html' | relative_url }}">EasterEggs</a></li>
+            </ul>
+        </li>
+
         <li><a href="{{ '/6-sdk.html' | relative_url }}">SDK</a></li>
         <li><a href="{{ '/7-custom-text.html' | relative_url }}">Custom Text</a></li>
         <li><a href="{{ '/8-conv-and-voices.html' | relative_url }}">Conversations and Voices</a></li>
@@ -93,4 +104,3 @@
         <li><a href="{{ '/12-public-facing.html' | relative_url }}">Public Facing</a></li>
     </ul>
 </nav>
-
