@@ -148,9 +148,9 @@
             </ul>
         </li>
 
-        <li class="has-submenu"> <!-- Added class -->
+        <li class="has-submenu"> 
             <a href="{{ '/11-management.html' | relative_url }}">Management</a>
-            <ul class="submenu"> <!-- Added submenu -->
+            <ul class="submenu"> 
                 <li><a href="{{ '/11-management.html' | relative_url }}#mgmt-gh-dev">GitHub Dev Site</a></li>
                 <li><a href="{{ '/11-management.html' | relative_url }}#mgmt-backup">Backup Process</a></li>
                 <li><a href="{{ '/11-management.html' | relative_url }}#mgmt-pc-struct">PC Dev Structure</a></li>
@@ -158,6 +158,14 @@
             </ul>
         </li>
 
-        <li><a href="{{ '/12-public-facing.html' | relative_url }}">Public Facing</a></li>
+        <li class="has-submenu"> <!-- Added class -->
+            <a href="{{ '/12-public-facing.html' | relative_url }}">Public Facing</a>
+            <ul class="submenu"> <!-- Added submenu -->
+                <li><a href="{{ '/12-public-facing.html' | relative_url }}#pf-discord">Discord</a></li>
+                <li><a href="{{ '/12-public-facing.html' | relative_url }}#pf-website">Official Redsun2020 Public Website</a></li>
+                <li><a href="{{ '/12-public-facing.html' | relative_url }}#pf-games">Published Game sites</a></li>
+                <li><a href="{{ '/12-public-facing.html' | relative_url }}#pf-demos">Demo Videos</a></li>
+            </ul>
+        </li>
     </ul>
 </nav>
