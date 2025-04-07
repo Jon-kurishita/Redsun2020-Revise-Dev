@@ -126,8 +126,10 @@
             </ul>
         </li>
 
-        <li class="has-submenu"> <a href="{{ '/9-custom-assets.html' | relative_url }}">Custom Assets</a>
-            <ul class="submenu"> <li><a href="{{ '/9-ca-classes.html' | relative_url }}">Custom Classes</a></li>
+        <li class="has-submenu"> 
+            <a href="{{ '/9-custom-assets.html' | relative_url }}">Custom Assets</a>
+            <ul class="submenu"> 
+                <li><a href="{{ '/9-ca-classes.html' | relative_url }}">Custom Classes</a></li>
                 <li><a href="{{ '/9-ca-triggers.html' | relative_url }}">Custom Triggers</a></li>
                 <li><a href="{{ '/9-ca-textures.html' | relative_url }}">Custom Textures</a></li>
                 <li><a href="{{ '/9-ca-brushes.html' | relative_url }}">Custom Brushes</a></li>
@@ -136,7 +138,16 @@
             </ul>
         </li>
 
-        <li><a href="{{ '/10-technical.html' | relative_url }}">Technical</a></li>
+        <li class="has-submenu"> <!-- Added class -->
+            <a href="{{ '/10-technical.html' | relative_url }}">Technical</a>
+            <ul class="submenu"> <!-- Added submenu -->
+                <li><a href="{{ '/10-tech-notes.html' | relative_url }}">Dev Game Notes</a></li>
+                <li><a href="{{ '/10-tech-tutorials.html' | relative_url }}">Tutorials</a></li>
+                <li><a href="{{ '/10-tech-automation.html' | relative_url }}">Scripting Automation</a></li>
+                <li><a href="{{ '/10-tech-feedback.html' | relative_url }}">Feedback, bugs, fixes</a></li>
+            </ul>
+        </li>
+
         <li><a href="{{ '/11-management.html' | relative_url }}">Management</a></li>
         <li><a href="{{ '/12-public-facing.html' | relative_url }}">Public Facing</a></li>
     </ul>
