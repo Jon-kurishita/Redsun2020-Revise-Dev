@@ -106,16 +106,26 @@
             </ul>
         </li>
 
-        <li class="has-submenu"> <!-- Added class -->
+        <li class="has-submenu"> 
             <a href="{{ '/7-custom-text.html' | relative_url }}">Custom Text</a>
-            <ul class="submenu"> <!-- Added submenu -->
+            <ul class="submenu"> 
                 <li><a href="{{ '/7-ct-datacubes.html' | relative_url }}">Datacubes</a></li>
                 <li><a href="{{ '/7-ct-computers.html' | relative_url }}">Computers and Emails</a></li>
                 <li><a href="{{ '/7-ct-books.html' | relative_url }}">Books and Newspapers</a></li>
             </ul>
         </li>
 
-        <li><a href="{{ '/8-conv-and-voices.html' | relative_url }}">Conversations and Voices</a></li>
+        <li class="has-submenu"> <!-- Added class -->
+            <a href="{{ '/8-conv-and-voices.html' | relative_url }}">Conversations and Voices</a>
+            <ul class="submenu"> <!-- Added submenu -->
+                 <li><a href="{{ '/8-cv-conedit.html' | relative_url }}">Conedit</a></li>
+                 <li><a href="{{ '/8-cv-conv-setup.html' | relative_url }}">Conversation Setup</a></li>
+                 <li><a href="{{ '/8-cv-conv-workflow.html' | relative_url }}">Conversation creation workflow</a></li>
+                 <li><a href="{{ '/8-cv-voice-setup.html' | relative_url }}">Voice setup</a></li>
+                 <li><a href="{{ '/8-cv-voice-workflow.html' | relative_url }}">Voice creation and workflow</a></li>
+            </ul>
+        </li>
+
         <li><a href="{{ '/9-custom-assets.html' | relative_url }}">Custom Assets</a></li>
         <li><a href="{{ '/10-technical.html' | relative_url }}">Technical</a></li>
         <li><a href="{{ '/11-management.html' | relative_url }}">Management</a></li>
