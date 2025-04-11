@@ -188,8 +188,55 @@
 <hr>
 
 <section id="mgmt-gh-dev">
-    <h3>GitHub Dev Site</h3>
-    <p>Contents will be placed here</p>
+    <h3>GitHub Dev Site Workflow Summary</h3>
+    <p>This section outlines the process undertaken to establish the current development workflow for the Redsun2020:Revise DEV documentation site, utilizing GitHub, GitHub Pages, and the Jekyll Static Site Generator.</p>
+    <h4>1. Initial GitHub Repository Setup</h4>
+    <ul>
+        <li>A new repository named <code>Redsun2020-Revise-Dev</code> was created on GitHub (<a href="https://github.com/Jon-kurishita/Redsun2020-Revise-Dev" target="_blank" rel="noopener noreferrer">https://github.com/Jon-kurishita/Redsun2020-Revise-Dev</a>).</li>
+        <li>Basic repository settings were configured (e.g., initialized with a README, LICENSE).</li>
+    </ul>
+    <h4>2. Local Project Setup</h4>
+    <ul>
+        <li>The GitHub repository was cloned to the local development machine using the command: <br><code>git clone https://github.com/Jon-kurishita/Redsun2020-Revise-Dev.git</code></li>
+        <li>The local project folder is located at <code>I:\08 REDSUN2020\Github\Redsun2020-Revise-Dev</code>.</li>
+    </ul>
+    <h4>3. Jekyll Migration</h4>
+    <ul>
+        <li>Recognizing the need for scalability and easier maintenance (especially for navigation), we decided to migrate the site structure from plain static HTML files to the Jekyll Static Site Generator (SSG).</li>
+        <li>A backup of the original static HTML structure was created using a Git branch named <code>backup-static-html</code>.</li>
+    </ul>
+    <h4>4. Local Environment Setup (PC)</h4>
+    <ul>
+        <li>Required tools: Ruby+DevKit, Jekyll, and Bundler.</li>
+        <li>Installation was performed using RubyInstaller for Windows (including DevKit).</li>
+        <li>Jekyll and Bundler were installed globally using the RubyGems command: <code>gem install jekyll bundler</code>.</li>
+        <li>Installation was verified using <code>ruby -v</code>, <code>jekyll -v</code>, and <code>bundle -v</code> in a **new** terminal window.</li>
+        <li>A <code>Gemfile</code> was created in the project root to specify dependencies (using the <code>github-pages</code> gem for compatibility).</li>
+        <li>Project-specific gems were installed using <code>bundle install</code>.</li>
+    </ul>
+    <h4>5. Current Jekyll Project Structure</h4>
+    <ul>
+        <li><code>_config.yml</code>: Main Jekyll configuration file (includes <code>baseurl: /Redsun2020-Revise-Dev</code>).</li>
+        <li><code>_layouts/default.html</code>: Contains the main HTML template (boilerplate, header, footer, CSS/JS links) with the <code>{{ content }}</code> placeholder where individual page content is inserted.</li>
+        <li><code>_includes/navigation.html</code>: Contains the complete, reusable navigation structure (multi-level, expandable). Included in the layout via <code>{% include navigation.html %}</code>.</li>
+        <li><code>assets/</code>: Folder containing subfolders for <code>css</code> and <code>js</code>.</li>
+        <li>Content Files (<code>index.html</code>, <code>1-project.html</code>, <code>*.html</code>): Located in the root directory. Each contains YAML Front Matter (specifying <code>layout: default</code> and a `title`) followed only by the unique HTML content for that page.</li>
+    </ul>
+    <h4>6. Local Development Workflow</h4>
+    <ol>
+        <li>Make changes to source files (e.g., edit content in page files like <code>1-project.html</code>, update navigation in <code>_includes/navigation.html</code>, modify styles in <code>assets/css/styles.css</code>).</li>
+        <li>Open a terminal in the project root directory (<code>I:\08 REDSUN2020\Github\Redsun2020-Revise-Dev</code>).</li>
+        <li>Run the command <code>bundle exec jekyll serve</code> to build the site and start the local preview server.</li>
+        <li>Open the server address (usually <code>http://127.0.0.1:4000/Redsun2020-Revise-Dev/</code>) in a web browser to preview changes.</li>
+        <li>When finished previewing, stop the server by pressing <code>Ctrl+C</code> in the terminal.</li>
+    </ol>
+    <h4>7. Publishing Updates to GitHub Pages</h4>
+    <ol>
+        <li>Open a terminal in the project root directory.</li>
+        <li>Use the combined Git command: <br><code>git add . && git commit -m "Your descriptive commit message" && git push origin main</code></li>
+        <li>Wait a few minutes for GitHub Pages to automatically rebuild and deploy the site using Jekyll.</li>
+        <li>Verify changes on the live site: <a href="https://jon-kurishita.github.io/Redsun2020-Revise-Dev/" target="_blank" rel="noopener noreferrer">https://jon-kurishita.github.io/Redsun2020-Revise-Dev/</a></li>
+    </ol>
 </section>
 
 <section id="mgmt-backup">
@@ -207,11 +254,11 @@
     <p>Contents will be placed here</p>
 </section>
     </main>
-    
+
     <footer>
-        
+
     </footer>
-    
+
     <script src="/Redsun2020-Revise-Dev/assets/js/script.js"></script> 
 </body>
 </html>

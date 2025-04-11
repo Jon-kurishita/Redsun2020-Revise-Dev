@@ -33,19 +33,21 @@ body {
     background-color: var(--bg-color);
     color: var(--text-color);
     transition: background-color 0.3s ease, color 0.3s ease;
+    margin: 0; /* Added to ensure no default body margin interferes */
+    padding: 0; /* Added to ensure no default body padding interferes */
 }
 
 nav {
     width: 480px;
     background-color: lightpink;
     padding: 20px;
-    position: fixed;
-    height: 100vh;
-    overflow-y: auto;
-    box-sizing: border-box;
-    top: 0;
-    left: 0;
-    z-index: 1000;
+    position: fixed; /* CRITICAL for fixed sidebar */
+    height: 100vh; /* CRITICAL for full height */
+    overflow-y: auto; /* Allows scrolling within nav if content is long */
+    box-sizing: border-box; /* Include padding/border in width/height */
+    top: 0; /* CRITICAL */
+    left: 0; /* CRITICAL */
+    z-index: 1000; /* Ensure it stays on top */
     border-top: 20px solid #003366;
     border-bottom: 20px solid #003366;
 }
@@ -58,6 +60,7 @@ nav h2 {
 nav ul {
     list-style: none;
     padding: 0;
+    margin: 0; /* Ensure no default margin on ul */
 }
 
 nav ul li {
@@ -72,6 +75,7 @@ nav ul li a {
     padding: 8px;
     border-radius: 5px;
     font-size: 0.9em;
+    position: relative; 
 }
 
 nav ul li a:hover {
@@ -97,24 +101,58 @@ nav ul li ul.submenu li a {
     padding: 5px 8px;
 }
 
+nav ul li ul.submenu ul.submenu {
+     padding-left: 20px;
+     margin-top: 5px;
+     font-size: 0.95em;
+}
+
+nav ul li ul.submenu ul.submenu li a {
+     padding: 4px 8px;
+}
+
 nav ul li.has-submenu.open > ul.submenu {
     display: block;
 }
 
-nav ul li.has-submenu > a::after {
+nav ul > li.has-submenu > a::after { 
     content: ' ▼';
     font-size: 0.7em;
     margin-left: 5px;
     display: inline-block;
     transition: transform 0.2s ease-in-out;
 }
-
-nav ul li.has-submenu.open > a::after {
+nav ul > li.has-submenu.open > a::after {
     transform: rotate(-180deg);
+}
+
+nav ul ul > li.has-submenu > a::after { 
+    content: ' ▸'; 
+    font-size: 0.7em;
+    margin-left: 5px;
+    display: inline-block;
+    transition: transform 0.2s ease-in-out;
+}
+nav ul ul > li.has-submenu.open > a::after {
+     transform: rotate(90deg); 
 }
 
 nav ul li ul.submenu li a:hover {
     background-color: #FFE4E1;
+}
+nav ul li ul.submenu ul.submenu li a:hover {
+     background-color: #FFF0F5; 
+}
+
+nav li.nav-part-heading {
+    color: #333; 
+    font-weight: bold;
+    margin-top: 15px; 
+    margin-bottom: 5px;
+    padding-left: 20px; 
+    font-size: 0.8em;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
 #theme-toggle-button {
@@ -134,7 +172,7 @@ nav ul li ul.submenu li a:hover {
 
 main {
     padding: 20px;
-    margin-left: 480px;
+    margin-left: 480px; /* CRITICAL for leaving space for nav */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -152,72 +190,64 @@ main a:hover {
     color: var(--link-hover-color);
 }
 
-main > h2 {
+main > h2 { 
     width: 100%;
-    max-width: 800px;
+    max-width: 800px; 
     text-align: center;
-    margin-bottom: 15px;
-    padding: 0 20px;
+    margin-bottom: 15px; 
+    padding: 0 20px; 
     box-sizing: border-box;
-    color: #003366;
-    font-weight: bold;
+    color: #003366; 
+    font-weight: bold; 
 }
 
-main > hr {
+main > hr { 
      width: 100%;
      max-width: 800px;
-     margin-top: 0;
-     margin-bottom: 25px;
+     margin-top: 0; 
+     margin-bottom: 25px; 
      border: 0;
      border-top: 1px solid var(--border-color);
      transition: border-color 0.3s ease;
 }
 
-main section {
+main section { 
     width: 100%;
-    max-width: 800px;
-    padding: 15px 20px;
-    margin-bottom: 20px;
+    max-width: 800px; 
+    padding: 15px 20px; 
+    margin-bottom: 20px; 
     box-sizing: border-box;
-    border-radius: 5px;
-    /* Removed transition from section */
+    border-radius: 5px; 
 }
 
-main section h3 {
+main section h3 { 
     margin-top: 0;
     margin-bottom: 0.5em;
-    color: #003366;
-    display: inline-block; /* Allow background only around text */
-    padding: 0; /* Reset padding */
-    margin: 0 0 0.5em 0; /* Reset margin, keep bottom */
-    border-radius: 3px; /* Optional: Rounded corners for highlight */
-    transition: background-color 0.4s ease, color 0.4s ease; /* Transition on H3 */
+    color: #003366; 
+    display: inline-block; 
+    padding: 0; 
+    margin: 0 0 0.5em 0; 
+    border-radius: 3px; 
+    transition: background-color 0.4s ease, color 0.4s ease; 
 }
 
 main section:target {
-    /* Remove background color from the section itself */
-    /* background-color: #FFD1DC; */ 
 }
 
 body.dark-mode main section:target {
-    /* Remove background color from the section itself */
-    /* background-color: #4d333f; */
 }
 
-/* Apply highlight ONLY to the H3 within the targeted section */
 main section:target h3 {
-    background-color: #FFD1DC; /* Light Pink highlight */
-    color: #003366; /* Keep text dark blue */
-    padding: 5px 10px; /* Add padding for background visibility */
-    margin: -5px -10px 0.5em -10px; /* Adjust negative margin for padding */
+    background-color: #FFD1DC; 
+    color: #003366; 
+    padding: 5px 10px; 
+    margin: -5px -10px 0.5em -10px; 
 }
 
-/* Dark mode specific highlight for H3 */
 body.dark-mode main section:target h3 {
-    background-color: #4d333f; /* Dark mode highlight color */
-    color: #e0e0e0; /* Ensure text color is light */
+    background-color: #4d333f; 
+    color: #e0e0e0; 
 }
-
 
 .page-header {
     background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://source.unsplash.com/1600x400/?business') no-repeat center center/cover;
