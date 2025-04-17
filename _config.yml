@@ -2,13 +2,11 @@ title: Redsun2020:Revise DEV
 markdown: kramdown
 baseurl: /Redsun2020-Revise-Dev
 
-# ──────────────────────────────────────────────────
-# Use the “default” layout for every page
 defaults:
   -
     scope:
-      path: ""       # all files in your project
-      type: "pages"  # only HTML/Markdown pages
+      path: ""
+      type: "pages"
     values:
       layout: "default"
 
