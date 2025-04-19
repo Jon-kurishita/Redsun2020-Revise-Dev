@@ -1,4 +1,6 @@
+ruby '>= 3.1.0', '< 4.0.0'
 source "https://rubygems.org"
 
-# Use the GitHub Pages gem group for compatibility
 gem "github-pages", group: :jekyll_plugins
+# …or gem "jekyll", "~> 4.3"
+
