@@ -3,42 +3,31 @@ layout: default
 title: Custom Assets
 ---
 
-<!-- Page-specific styles: remove header, set backgrounds, hide vertical scrollbar -->
+<!-- Page-specific styles: black background for main, remove extra spacing -->
 <style>
-  /* Hide the site header */
-  header { display: none; }
-
-  /* Make the entire page and main content black */
-  html, body, main {
-    background-color: #000;
-    margin: 0;
-    padding: 0;
-  }
-
-  /* Hide any vertical scrollbar on this page */
-  html, body {
-    overflow-y: hidden;
+  main {
+    background-color: #000 !important;
+    padding: 0 !important;
   }
 </style>
 
 <div style="padding: 20px;">
-  <h2 style="color: #fff; margin-top: 0;">Custom Assets</h2>
-  <hr style="border-color: #fff;">
+  <h2 style="color: #fff; margin: 0;">Custom Assets</h2>
+  <hr style="border-color: #fff; margin: 10px 0;">
 
-  <!-- Video container fitting the content column width -->
-  <div class="video-container" style="max-width:100%; overflow:hidden; margin: 20px auto 0;">
+  <!-- Video covering the full width of the content pane -->
+  <div style="max-width: 100%; margin: 0 auto; overflow: hidden;">
     <video
       autoplay
       loop
       muted
       playsinline
-      style="width:100%; height:auto; display:block;"
+      style="width: 100%; height: auto; display: block;"
     >
       <source
         src="{{ '/images/HibiyaPark-Wanted-Poster.mp4' | relative_url }}"
         type="video/mp4"
       >
-      <!-- Fallback text for older browsers -->
       <p style="color: #fff;">Your browser does not support HTML5 video.</p>
     </video>
   </div>
