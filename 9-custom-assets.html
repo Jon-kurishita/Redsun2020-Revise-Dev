@@ -3,12 +3,18 @@ layout: default
 title: Custom Assets
 ---
 
-<h2>Custom Assets</h2>
-<hr>
+<!-- Page-specific style: make background black -->
+<style>
+  /* Only this page */
+  body {
+    background-color: #000;
+  }
+</style>
 
-<!--
-  Video container fitting the content column width
--->
+<h2 style="color: #fff;">Custom Assets</h2>
+<hr style="border-color: #fff;">
+
+<!-- Video container fitting the content column width -->
 <div class="video-container" style="max-width:100%; overflow:hidden; margin: 0 auto 20px;">
   <video
     autoplay
@@ -22,6 +28,6 @@ title: Custom Assets
       type="video/mp4"
     >
     <!-- Fallback text for older browsers -->
-    Your browser does not support HTML5 video.
+    <p style="color: #fff;">Your browser does not support HTML5 video.</p>
   </video>
 </div>
