@@ -3,35 +3,32 @@ layout: default
 title: Custom Assets
 ---
 
-<!-- Page-specific styles scoped only to main content -->
+<!-- Page-specific styles: black background for main, remove extra spacing -->
 <style>
   main {
-    background-color: #000;
-    padding: 20px;
-    margin: 0;
-  }
-  .cover-title {
-    color: #fff;
-    font-size: 2.2rem;
-    text-align: center;
-    margin-bottom: 1rem;
-  }
-  .cover-video {
-    width: 100%;
-    height: auto;
-    display: block;
-    margin: 0 auto;
-    max-height: 80vh;
+    background-color: #000 !important;
+    padding: 0 !important;
   }
 </style>
 
-<div>
-  <div class="cover-title">Custom Assets</div>
-  <hr style="border-color: #fff; margin-bottom: 20px;">
+<div style="padding: 20px;">
+  <h2 style="color: #fff; margin: 0;">Custom Assets</h2>
+  <hr style="border-color: #fff; margin: 10px 0;">
 
-  <video class="cover-video" autoplay loop muted playsinline>
-    <source src="{{ '/images/HibiyaPark-Wanted-Poster.mp4' | relative_url }}" type="video/mp4">
-    <p style="color: #fff;">Your browser does not support HTML5 video.</p>
-  </video>
+  <!-- Video covering the full width of the content pane -->
+  <div style="max-width: 100%; margin: 0 auto; overflow: hidden;">
+    <video
+      autoplay
+      loop
+      muted
+      playsinline
+      style="width: 100%; height: auto; display: block;"
+    >
+      <source
+        src="{{ '/images/HibiyaPark-Wanted-Poster.mp4' | relative_url }}"
+        type="video/mp4"
+      >
+      <p style="color: #fff;">Your browser does not support HTML5 video.</p>
+    </video>
+  </div>
 </div>
-
